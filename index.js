@@ -1,11 +1,8 @@
 const express = require("express");
 
 const app = express();
+const productRouter = require("./src/routes/products");
 
-app.use(() => {
-  console.log("hello server");
-  console.log("hello server ....");
-  console.log("hello Aditia");
-});
+app.use("/", productRouter);
 
 app.listen(4000);
