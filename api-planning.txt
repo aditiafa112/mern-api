@@ -1,0 +1,82 @@
+STANDART API
+{root.api}/{version}/{grouping}/{endpoint}
+SAMPLE:
+http://api.aditia.com/v1/auth/login
+
+=====================================================================================================================================
+
+STANDART STATUS RESPONSE
+[200] - OK                      --> Call API Success.
+[201] - Created                 --> Post Success.
+[400] - Bad Request             --> Error on Client Side (can be error input).
+[401] - Unauthorized            --> User not authorized to the request.
+[403] - Forbidden               --> User not allowed to access.
+[404] - Not Found               --> Request Endpoint not found.
+[500] - Internal Server Error   --> Error on Server Side.
+[502] - Bad Gateway             --> Invalid Response from another Request.
+
+=====================================================================================================================================
+
+GROUP: Authentication
+[1] - Register
+[POST]: {root.api}/{version}/auth/register
+req: 
+{
+    "name": "Testing",
+    "email": "aditia@gmail.com",
+    "password": "123123"
+}
+res: 
+{
+    "message": "Register Success",
+    "data": {
+        "id" : 1,
+        "name": "Testing",
+        "email": "aditia@gmail.com",
+        "password": "123123"
+    }
+}
+err-res: 
+201 -> Register Berhasil
+400 -> Input yang anda masukan tidak valid
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+[2] - Login
+{root.api}/{version}/auth/login
+
+=====================================================================================================================================
+
+GROUP: Blog
+[1] - Create Blog Post
+[POST]: {root.api}/{version}/blog/post
+req: 
+{
+    "title": "Title Blog",
+    "image": "imagefile.png",
+    "body": "Lorep ipsum is simply dummy text of the printint."
+}
+res: 
+{
+    "message": "Create Blog Post Success",
+    "data": {
+        "post_id" : 1,
+        "title": "Title Blog",
+        "image": "imagefile.png",
+        "body": "Lorep ipsum is simply dummy text of the printint."
+        "created_at": "12/06/2020",
+        "author": {
+            "uid": 1,
+            "name": "Testing"
+        }
+    }
+}
+err-res: 
+201 -> Blog Post Berhasil Dibuat
+400 -> Input yang anda masukan tidak valid
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+[2] - Get Blog Post
+[3] - Update Blog Post
+[4] - Delete Blog Post

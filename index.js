@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 
 const app = express();
 const authRoutes = require("./src/routes/auth");
@@ -27,4 +28,11 @@ app.use((error, req, res, next) => {
   res.status(status).json({ message: message, data: data });
 });
 
-app.listen(4000);
+mongoose
+  .connect(
+    "mongodb+srv://aditia:Z1CYWVSps7Qmxk5n@cluster0.cdvgu.mongodb.net/<dbname>?retryWrites=true&w=majority"
+  )
+  .then(() => {
+    app.listen(4000, () => console.log("Connection Success"));
+  })
+  .catch((err) => console.log(err, "Connection Failed"));
