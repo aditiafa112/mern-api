@@ -42,3 +42,16 @@ exports.createBlogPost = (req, res, next) => {
       console.log("err: ", err);
     });
 };
+
+exports.getAllBlogPost = (req, res, next) => {
+  BlogPost.find()
+    .then((result) => {
+      res.status(200).json({
+        message: "Data Blog Post berhasil di panggil",
+        data: result,
+      });
+    })
+    .catch((err) => {
+      next(err);
+    });
+};
