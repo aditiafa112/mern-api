@@ -30,7 +30,7 @@ app.use((error, req, res, next) => {
 
 mongoose
   .connect(
-    "mongodb+srv://aditia:Z1CYWVSps7Qmxk5n@cluster0.cdvgu.mongodb.net/<dbname>?retryWrites=true&w=majority"
+    "mongodb+srv://aditia:Z1CYWVSps7Qmxk5n@cluster0.cdvgu.mongodb.net/blog?retryWrites=true&w=majority"
   )
   .then(() => {
     app.listen(4000, () => console.log("Connection Success"));
